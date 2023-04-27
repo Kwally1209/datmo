@@ -1,0 +1,26 @@
+<launch>
+
+<arg name="map" default="$(find datmo)/maps/map_data.yaml"/>
+<node pkg="map_server" name="map_server_for_datmo" type="map_server" args="$(arg map)" >
+    <remap from="/map" to="/datmo/map"/>
+</node>
+
+<node pkg="datmo" type="datmo" name="datmo" output="screen">
+    <param name="max_cluster_size" value="500" />
+    <param name="min_cluster_size" value="7" />  <!-- This two arg can make some constraint to figure out box from car -->
+    <param name="lidar_frame" value="laser" />
+    <param name="world_frame" value="map" />
+    <param name="input_topic" value="scan" />
+    <param name="threshold_distance" value="0.10" />
+    <param name="euclidean_distance" value="0.50" />
+    <param name="pub_markers" value="false" />
+    <param name="lambda" value="50" />
+    <param name="pub_obs" value="true" />
+    <param name="pub_obs_viz" value="true" />
+    <param name="target_width" value="0.16" />
+    <param name="target_length" value="0.16" />
+    <param name="use_pose" value="false" />
+</node>
+
+    
+</launch>

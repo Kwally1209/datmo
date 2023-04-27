@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/hmc/marker_ws/src/datmo/cmake-build-debug/devel/setup.sh
